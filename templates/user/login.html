@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="icon" href="{% static 'images/icons/favicon.png' %}" type="image/x-icon">
+    <title>{{title}}</title>
+</head>
+<body>
+    <section id="login">
+        <section class="title">
+
+        </section>
+        <section class="form">
+            <div class="top">
+                <h1>User Login</h1>
+            </div>
+            <div class="bottom">
+                <form action="" method="post">
+                {% csrf_token %}
+
+                    <div class="input_container">
+                        <label for="id_username">Username</label>
+                        <input id="id_username" name="username" type="text" placeholder="Enter Username" >
+                    </div>
+                    <div class="input_container">
+                        <label for="id_password">Password</label>
+                        <input id="id_password" name="password" type="password" placeholder="Enter password">
+                    </div>
+                    <div class="submit_container">
+                        {% if error %}
+                        <p class="error_message">{{message}}</p>
+                        {% endif %}
+                        <button type="submit">Log in</button>
+                    </div>
+                </form>
+                <span>Not Registered ?</span>
+                <a href="{% url 'user:signup' %}">Signup</a>
+            </div>
+        </section>
+    </section>
+</body>
+</html>

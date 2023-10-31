@@ -1,3 +1,6 @@
-from django.contrib import admin
+from django.contrib import admin 
+from quora.models import Profile
 
-# Register your models here.
+
+
+admin.site.register(Profile)

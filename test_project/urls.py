@@ -1,12 +1,14 @@
 from django.contrib import admin
-from django.urls import path, includes
+from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', includes("quora.urls" , namespace = 'quora')),
+    path('', include("quora.urls" , namespace = 'quora')),
+    path('', include("web.urls" , namespace = 'web')),
+    path('', include("user.urls" , namespace = 'user')),
 ]
 
 
