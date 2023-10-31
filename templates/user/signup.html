@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>{{title}}</title>
+</head>
+<body>
+    <section id="login">
+        <section class="title">
+ 
+        </section>
+        <section class="form">
+            <div class="top">
+                <h1>Create Account</h1>
+            </div>
+            <div class="bottom">
+                <form action="" method="post">
+                    {% csrf_token %}
+                    <div class="top">
+                        <div class="right">
+                            {% for field in form %}
+
+                                <div class="input_container">
+                                    <label for="field.id_for_label">{{field.label}}</label>
+                                    {{field}}
+                                </div>
+
+                            {% endfor %}
+                        </div>
+                        <div class="submit_container">
+                            {% if error %}
+                            <p class="error_message">{{message}}</p>
+                            {% endif %}
+                            <button class="submit" type="submit">Create</button>
+                        </div>
+                    </div>
+                </form>
+                <span>already have an acount ?</span>
+                <a href="{% url 'user:login' %}">Login</a>
+            </div>
+        </section>
+    </section>
+</body>
+</html>

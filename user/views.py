@@ -28,7 +28,7 @@ def login (request):
     
     else:
         context = {
-                "title" : "sign in | Meal Planner "
+                "title" : "login"
 
         }
         return render (request, "user/login.html",context = context)
@@ -57,17 +57,17 @@ def signup(request):
         else:
             message = generate_form_errors(form)
             context = {
-                "title" : "student signup",
+                "title" : "user signup",
                 "error" : True,
                 "message" : message,
                 "form" : form
             }
-            return render(request, "users/signup.html",context = context)
+            return render(request, "user/signup.html",context = context)
    else:
       
     form = UserForm()
     context = {
-        "title" : "student Signup",
+        "title" : "user signup",
         "form" : form,
     }
-    return render (request,"users/signup.html", context = context) 
+    return render (request,"user/signup.html", context = context) 
