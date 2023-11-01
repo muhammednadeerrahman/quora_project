@@ -61,7 +61,7 @@ header div.middle div.SearchContainer input{
 header div.right{
     width: 40%;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
     
 }
 header div.right a.question{
@@ -70,6 +70,7 @@ header div.right a.question{
     background-color: #b92b27;
     border-radius: 8px;
     border: none;
+    margin-right: 20px;
     
 }
 header div.right div.profile{

@@ -145,7 +145,7 @@ $("a.action-button").on("click",function(e){
                         var stable = data["stable"]
                         var title = data["title"]
 
-                        Swal.hideLoading();
+                        // Swal.hideLoading();
                         if (status == "success") {
                             if (title) {
                                 title = title;
@@ -186,14 +186,45 @@ $("a.action-button").on("click",function(e){
                         }
                     },
                     error: function(data){
-                        Swal.hideLoading();
+                        // Swal.hideLoading();
                         var title = "An error occurred";
                         var message =
                             "An error occurred. Please try again later.";
-                        Swal.fire(title, message, "error");
+                        // Swal.fire(title, message, "error");
                     }
                 })
             },100)
         }
     }) 
     });
+
+$("a.like-button").on("click", function(e) {
+    e.preventDefault();
+
+    var $this = $(this);
+    var url = $this.attr("href");
+    var likeImage = $this.find("img");  
+
+    $.ajax({
+        type: "get",
+        url: url,
+        dataType: "json",
+        success: function(data) {
+            if (data.status === "success") {
+                if (data.liked) {
+                    likeImage.attr("src", "static/images/heart2.png");
+                } else {
+                    likeImage.attr("src", "static/images/heart1.png");
+                }
+                var likeCount = data.like_count;
+                var likeCountElement = $this.siblings(".like-count");
+                likeCountElement.text(likeCount);
+            } else {
+                console.log("An error occurred: " + data.message);
+            }
+        },
+        error: function(data) {
+            console.log("An error occurred: " + data.message);
+        }
+    });
+});

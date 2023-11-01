@@ -31,16 +31,18 @@
                             <img src="{%static "images/profile_demo.png" %}" alt="profile">
                         </div>
                         <div class="right">
-
                                 <h5>{{question.name}}</h5>
-
                                 <h6>{{question.date}}</h6>
-
                         </div>
                     </div>
                     <div class="main">
                             <h4 class="question">{{question.question}}</h4>
-                            <a href="{% url 'quora:answer' id=question.id %}" class="answer">Answer</a>
+                            {% if request.user.is_authenticated %}
+                                <a href=" {% url 'quora:answer' id=question.id %}" >Answer</a>
+                            {% else %}
+                                <a href=" {% url 'user:login' %}" >Answer</a>
+                             {% endif %}
+
                             {% for answer in question.answer_set.all %}
                             <div class="item">
                                 <h5>{{answer.username}}</h5>
@@ -49,19 +51,38 @@
                                     {{answer.answer}}
 
                                 </p>
+                                <p>{{answer.like}}</p>
+                                {% if user.is_authenticated %}
+                                    {% if request.user in answer.like.all %}
+                                        <div class="like">
+                                            <a href="{% url 'quora:like' id=answer.id%}" class="like-button reload"><img class="likeImage" src="{% static 'images/heart2.png' %}" alt="userliked"></a>
+                                            
+                                            <h5 class="like-count">{{answer.like.count}} likes</h5>
+                                        </div>
+                                    {% else %}
+                                        <div class="like">
+                                            <a href="{% url 'quora:like' id=answer.id%}" class="like-button reload"><img class="likeImage" src="{% static 'images/heart1.png' %}" alt="userliked"></a>
+                                            
+                                            <h5 class="like-count"> {{answer.like.count}} likes</h5>
+                                        </div>
+                                    {% endif %}
+                                {% else %}
                                 <div class="like">
-                                    <img src="{% static 'images/heart2.png' %}" alt="userliked">
-                                    <h5>likes</h5>
+                                    <img  src="{% static 'images/heart1.png' %}" alt="userliked">
+                                    <h5>{{answer.like.count}} likes</h5>
                                 </div>
+                                {% endif %}
                             </div>
                             {% endfor %}
                     </div>
-                    
                 </div>
             </div>
             {% endfor %}
         </div>
     </section>
-    
+
+    <script src="{% static 'js/jquery-3.6.4.min.js' %}"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="{% static 'js/script.js' %}"></script>
 </body>
 </html> 

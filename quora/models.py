@@ -29,4 +29,9 @@ class Answer (models.Model):
     like  = models.ManyToManyField("auth.User",null=True,blank=True)
     is_deleted = models.BooleanField(default=False)
 
-    
+    class Meta :
+        ordering = ["-id"]
+
+
+    def _str__(self):
+        return self.answer

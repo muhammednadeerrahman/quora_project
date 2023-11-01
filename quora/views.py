@@ -1,5 +1,6 @@
 import json
 
+from django.http import JsonResponse
 from django.shortcuts import render, get_object_or_404
 from django.http.response import HttpResponse
 
@@ -84,13 +85,88 @@ def answer(request,id):
         }
     return render(request,"quora/answer.html",context=context)
      
+def deleteQ (request,id):
+    instance = get_object_or_404(Question,id=id)
+    instance.is_deleted = True
+    instance.save()
+    response_data = {
+         "title" : "successfully deleted",
+        "message" : "post deleted successfully",
+        "status" : "success",
+        "reload" : "yes",
+    }
+    return HttpResponse(json.dumps(response_data), content_type = "application/javascript")
 
-    #     question
-    # if request.method == 'post':
-    #     username = request.user.profile
+def deleteA (request,id):
+    instance = get_object_or_404(Answer,id=id)
+    instance.is_deleted = True
+    instance.save()
+    response_data = {
+         "title" : "successfully deleted",
+        "message" : "post deleted successfully",
+        "status" : "success",
+        "reload" : "yes",
+    }
+    return HttpResponse(json.dumps(response_data), content_type = "application/javascript")
 
-    context = {
-            "title" : "Write your Answer",
-            "question" : question
+def like (request,id):
+    if request.user.is_authenticated:
+        instance = get_object_or_404(Answer,id=id)
+        if request.user in instance.like.all() :
+            instance.like.remove(request.user)
+            Like_status = False
+        else:
+            Like_status = True
+            instance.like.add(request.user)
+        instance.save()        
+        like_count = str(instance.like.count()) + " likes"
+        response_data = {
+                "liked" : Like_status,
+                "title": "Like toggled",
+                "message": "Like status updated",
+                "status": "success",
+                "like_count": like_count ,
+            }
+    else:
+        response_data = {
+            "title": "Authentication required",
+            "message": "Please log in to like answers",
+            "status": "error",
+        }
+    return HttpResponse(json.dumps(response_data), content_type = "application/javascript")
+
+
+def editAnswer(request,id):
+    question = get_object_or_404(Question,id=id)
+    username = request.user.profile
+    if request.method == 'POST':
+        form = AnswerForm(request.POST,instance=instance)
+        if form.is_valid():
+            instance = form.save(commit=False)
+            instance.save()
+
+            response_data = {
+                "message" :"sucessfully submitted",
+                "title" :"sucessfully submitted",
+                "status" : "success",
+                "redirect_url" : "/",
+                "redirect" : "yes"
+            }
+            return HttpResponse(json.dumps(response_data),content_type = "application/javascript")
+        else:
+            error_message = generate_form_errors(form)
+            response_data = {
+                    "message" :str(error_message),
+                    "title" :"please check something error occured",
+                    "status" : "error",
+                    "redirect_url" : "/",
+                    "redirect" : "yes"
+                }
+            return HttpResponse(json.dumps(response_data),content_type = "application/javascript")
+    else: 
+        form = AnswerForm()
+        context ={
+        "form" : form,
+        "title" : "create form"
         }
     return render(request,"quora/answer.html",context=context)
