@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <section id="create">
+        <div class="wrapper">
+            <div class="close">
+                <div class="close_container">
+                    <img src="" alt="">
+                </div>
+            </div>
+            <div class="title">Add Question</div>
+            <form class="ajax redirect" action="" method="post">
+            {% csrf_token %}
+            {% for field in form %}
+            <div class="input_container">
+                {{field}}
+            </div>
+            {% endfor  %}
+                
+                <button class="submit">Submit</button>
+            </form>
+
+        </div>
+    </section>
+
+    <script src="{% static 'js/jquery-3.6.4.min.js' %}"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>

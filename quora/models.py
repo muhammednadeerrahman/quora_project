@@ -8,3 +8,15 @@ class Profile(models.Model):
 
     def __str__(self):
         return self.name
+    
+
+class Question(models.Model):
+    question = models.TextField()
+    name = models.ForeignKey("quora.Profile",on_delete=models.CASCADE)
+    date = models.DateTimeField(auto_now_add=True)
+    like = models.ManyToManyField("auth.User",null=True,blank=True)
+    is_deleted = models.BooleanField(default=False)
+    is_draft = models.BooleanField(default=False)
+
+    def _str__(self):
+        return self.question

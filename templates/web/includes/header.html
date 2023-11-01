@@ -1,0 +1,21 @@
+{% load static %}
+<header>
+    <div class="left">
+        <h1><a href="{% static 'web:index' %}">Logo</a></h1>
+    </div>
+    <div class="middle">
+        <div class="SearchContainer">
+            <img src="{% static 'images/search.png' %}" alt="search">
+            <input type="text" name="q" placeholder="search...">
+        </div>
+    </div>
+    <div class="right">
+        <button class="question">Add Question</button>
+        <div class="profile">
+            <span>N</span>
+            <!-- <h5 class="name">nadeer</h5>
+            <h5 class="email">nadeeer@example.com</h5>
+            <button class="logout">Log out</button> -->
+        </div>
+    </div>
+</header>

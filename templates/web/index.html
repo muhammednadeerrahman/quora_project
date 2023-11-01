@@ -4,9 +4,58 @@
     {% load static %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static "css/style.css" %}">
     <title>{{title}}</title>
 </head>
 <body>
-<h1>hello</h1>
+    {% include "web/includes/header.html" %}
+    <section id="main">
+        <div class="left">
+            <div class="filter">
+                <h2>Filter</h2>
+                <ul>
+                    <li>place</li>
+                    <li>food</li>
+                    <li>automobile</li>
+                    <li>construction</li>
+                    <li>Books</li>
+                </ul>
+            </div>
+        </div>
+        <div class="right">
+            {% for question in question %}
+            <div class="content">
+                <div class="question">
+                    <div class="title">
+                        <div class="left">
+                            <img src="{%static "images/profile_demo.png" %}" alt="profile">
+                        </div>
+                        <div class="right">
+
+                                <h5>{{question.name}}</h5>
+
+                                <h6>{{question.date}}</h6>
+
+                        </div>
+                    </div>
+                    <div class="main">
+
+                            <h4 class="question">{{question.question}}</h4>
+                            <p class="answer">
+                                This right here. The picture was taken on January 5th 2023, right after completing all the necessary rituals. Both of my parents died within a span of 13 days.
+                            </p>
+
+                    </div>
+                    <div class="like">
+                        <img src="{% static 'images/heart2.png' %}" alt="userliked">
+
+                        <h5>likes</h5>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+    
 </body>
-</html>
+</html> 
