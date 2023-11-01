@@ -20,3 +20,11 @@ class Question(models.Model):
 
     def _str__(self):
         return self.question
+    
+class Answer (models.Model):
+    answer = models.TextField()
+    question = models.ForeignKey("quora.Question",on_delete=models.CASCADE)
+    username = models.ForeignKey("quora.Profile",on_delete=models.CASCADE)
+    date = models.DateTimeField(auto_now_add=True)
+    like  = models.ManyToManyField("auth.User")
+    is_deleted = models.BooleanField(default=False)
