@@ -26,5 +26,7 @@ class Answer (models.Model):
     question = models.ForeignKey("quora.Question",on_delete=models.CASCADE)
     username = models.ForeignKey("quora.Profile",on_delete=models.CASCADE)
     date = models.DateTimeField(auto_now_add=True)
-    like  = models.ManyToManyField("auth.User")
+    like  = models.ManyToManyField("auth.User",null=True,blank=True)
     is_deleted = models.BooleanField(default=False)
+
+    

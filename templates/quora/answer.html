@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <section id="answer">
+        <section class="content">
+            <form class="ajax redirect" action="" method="post">
+                {% csrf_token %}
+
+                <div class="title">
+                    <h5 class="question">{{question.question}}</h5>
+                </div>
+                {% for field in form %}
+                <div class="input_contianer">
+                    {{field}}
+                </div>
+                {% endfor %}
+                <div class="submit">
+                    <button class="submit">submit</button>
+                </div>
+
+            </form>
+        </section>
+    </section>
+
+    <script src="{% static 'js/jquery-3.6.4.min.js' %}"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>

@@ -64,7 +64,7 @@ header div.right{
     justify-content: space-evenly;
     
 }
-header div.right button.question{
+header div.right a.question{
     padding:6px 14px;
     color: #fff;
     background-color: #b92b27;
@@ -190,23 +190,37 @@ section#main div.content div.question div.main h4{
     margin-bottom: 20px;
 
 }
-section#main div.content div.question div.main p{
-    font-size: 14ox;
+section#main div.content div.question div.main div.item{
+    margin-bottom: 20px;
+    background: #fff;
+    padding: 20px;
 
 }
-section#main div.content div.question div.like{
+section#main div.content div.question div.main div.item h5{
+    margin-bottom: 5px;
+}
+section#main div.content div.question div.main div.item h6{
+    margin-bottom: 10px;
+
+}
+section#main div.content div.question div.main div.item p{
+    line-height: 1.7em;
+
+}
+
+section#main div.content div.question div.item div.like{
     display: flex;
     align-items: flex-end;
     justify-content: flex-end;
 
 }
-section#main div.content div.question div.like img{
+section#main div.content div.question div.item div.like img{
     width: 20px;
     height: 20px;
     margin-right: 10px;
     display: block;
 
 }
-section#main div.content div.question div.like h5{
+section#main div.content div.question div.item div.like h5{
 
 }

@@ -5,5 +5,6 @@ app_name = "quora"
 
 urlpatterns = [
     path('create/', views.create, name = "create"),
+    path('answer/<int:id>', views.answer, name = "answer"),
 
 ]

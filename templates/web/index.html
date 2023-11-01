@@ -39,18 +39,24 @@
                         </div>
                     </div>
                     <div class="main">
-
                             <h4 class="question">{{question.question}}</h4>
-                            <p class="answer">
-                                This right here. The picture was taken on January 5th 2023, right after completing all the necessary rituals. Both of my parents died within a span of 13 days.
-                            </p>
+                            <a href="{% url 'quora:answer' id=question.id %}" class="answer">Answer</a>
+                            {% for answer in question.answer_set.all %}
+                            <div class="item">
+                                <h5>{{answer.username}}</h5>
+                                <h6>{{answer.date}}</h6>
+                                <p class="answer">
+                                    {{answer.answer}}
 
+                                </p>
+                                <div class="like">
+                                    <img src="{% static 'images/heart2.png' %}" alt="userliked">
+                                    <h5>likes</h5>
+                                </div>
+                            </div>
+                            {% endfor %}
                     </div>
-                    <div class="like">
-                        <img src="{% static 'images/heart2.png' %}" alt="userliked">
-
-                        <h5>likes</h5>
-                    </div>
+                    
                 </div>
             </div>
             {% endfor %}
