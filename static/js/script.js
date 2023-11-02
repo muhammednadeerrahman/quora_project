@@ -145,7 +145,7 @@ $("a.action-button").on("click",function(e){
                         var stable = data["stable"]
                         var title = data["title"]
 
-                        // Swal.hideLoading();
+                        Swal.hideLoading();
                         if (status == "success") {
                             if (title) {
                                 title = title;
@@ -186,11 +186,11 @@ $("a.action-button").on("click",function(e){
                         }
                     },
                     error: function(data){
-                        // Swal.hideLoading();
+                        Swal.hideLoading();
                         var title = "An error occurred";
                         var message =
                             "An error occurred. Please try again later.";
-                        // Swal.fire(title, message, "error");
+                        Swal.fire(title, message, "error");
                     }
                 })
             },100)

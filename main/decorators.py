@@ -8,7 +8,7 @@ from quora.models import Question,Answer
 def allow_self(function):
     def wrapper(request, *args, **kwargs):
         id = kwargs["id"]
-        if not Question.objects.filter(id=id,author__user = request.user).exists():
+        if not Question.objects.filter(id=id,name__user= request.user).exists():
             if request.headers.get("x-requested-with")=="XMLHttpRequest":
                 response_data = {
                     "title" : "unauthorised access",
@@ -26,7 +26,7 @@ def allow_self(function):
 def allow_selfA(function):
     def wrapper(request, *args, **kwargs):
         id = kwargs["id"]
-        if not Answer.objects.filter(id=id,author__user = request.user).exists():
+        if not Answer.objects.filter(id=id,username__user = request.user).exists():
             if request.headers.get("x-requested-with")=="XMLHttpRequest":
                 response_data = {
                     "title" : "unauthorised access",
