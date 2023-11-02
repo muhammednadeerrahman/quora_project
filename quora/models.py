@@ -18,7 +18,8 @@ class Question(models.Model):
     is_deleted = models.BooleanField(default=False)
     is_draft = models.BooleanField(default=False)
 
-    def _str__(self):
+
+    def __str__(self):
         return self.question
     
 class Answer (models.Model):
@@ -33,5 +34,5 @@ class Answer (models.Model):
         ordering = ["-id"]
 
 
-    def _str__(self):
+    def __str__(self):
         return self.answer
