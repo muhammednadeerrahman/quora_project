@@ -7,6 +7,9 @@ def index (request):
     question = Question.objects.filter(is_deleted=False)
 
     answer = Answer.objects.filter(is_deleted=False)
+    
+    q = request.GET.get("q")    
+    print(q)
 
     context ={
         "title" : "quora",

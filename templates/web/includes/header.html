@@ -4,10 +4,10 @@
         <h1><a href="/">Logo</a></h1>
     </div>
     <div class="middle">
-        <div class="SearchContainer">
-            <img src="{% static 'images/search.png' %}" alt="search">
-            <input type="text" name="q" placeholder="search...">
-        </div>
+            <div class="SearchContainer">
+                <img src="{% static 'images/search.png' %}" alt="search">
+                <input type="text" name="q" placeholder="search...">
+            </div>
     </div>
     <div class="right">
         {% if request.user.is_authenticated %}

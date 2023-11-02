@@ -11,23 +11,22 @@
     {% include "web/includes/header.html" %}
     <section id="create">
         <div class="wrapper">
-            <div class="close">
-                <div class="close_container">
-                    <img src="" alt="">
-                </div>
-            </div>
-            <div class="title">Add Question</div>
+            <h2 class="title">Add Question</h2>
             <form class="ajax redirect" action="" method="post">
             {% csrf_token %}
-            {% for field in form %}
-            <div class="input_container">
-                {{field}}
-            </div>
-            {% endfor  %}
+                {% for field in form %}
+                <div class="input_container">
+                    {{field}}
+                </div>
+                {% endfor  %}
                 
-                <button class="submit">Submit</button>
+                {% if error %}
+                    <p class="error_message">{{message}}</p>
+                {% endif %}
+                <div class="submit_container">
+                    <button class="submit">Submit</button>
+                </div>
             </form>
-
         </div>
     </section>
 

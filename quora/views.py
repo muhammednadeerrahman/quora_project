@@ -34,7 +34,8 @@ def create (request):
         else:
             error_message = generate_form_errors(form)
             response_data = {
-                    "message" :str(error_message),
+                    "error" : True,
+                    "message" :str(error_message),                    
                     "title" :"please check something error occured",
                     "status" : "error",
                     "redirect_url" : "/",
@@ -76,6 +77,7 @@ def answer(request,id):
         else:
             error_message = generate_form_errors(form)
             response_data = {
+                    "error" : True,
                     "message" :str(error_message),
                     "title" :"please check something error occured",
                     "status" : "error",
@@ -87,7 +89,8 @@ def answer(request,id):
         form = AnswerForm()
         context ={
         "form" : form,
-        "title" : "create form"
+        "title" : "create form",
+        "question" : question
         }
     return render(request,"quora/answer.html",context=context)
 

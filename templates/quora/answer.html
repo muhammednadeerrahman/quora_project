@@ -4,30 +4,26 @@
     {% load static %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static "css/style.css" %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <title>Document</title>
 </head>
 <body>
     {% include "web/includes/header.html" %}
-    <section id="answer">
-        <section class="content">
+    <section id="create">
+        <div class="wrapper">
             <form class="ajax redirect" action="" method="post">
                 {% csrf_token %}
-
-                <div class="title">
-                    <h5 class="question">{{question.question}}</h5>
-                </div>
+                    <h2 class="question">{{question.question}}</h2>
                 {% for field in form %}
-                <div class="input_contianer">
+                <div class="text_container">
                     {{field}}
                 </div>
                 {% endfor %}
-                <div class="submit">
+                <div class="submit_container">
                     <button class="submit">submit</button>
                 </div>
-
             </form>
-        </section>
+        </div>
     </section>
 
     <script src="{% static 'js/jquery-3.6.4.min.js' %}"></script>
@@ -35,3 +31,20 @@
     <script src="{% static 'js/script.js' %}"></script>
 </body>
 </html>
+
+<section id="create">
+    <div class="wrapper">
+        <h2 class="title">Enter your Answer</h2>
+        <form class="ajax redirect" action="" method="post">
+            {% csrf_token %}
+            {% for field in form %}
+            <div class="text_container">
+                {{field}}
+            </div>
+            {% endfor  %}
+            <div class="submit_container">
+                <button class="submit">Submit</button>
+            </div>
+        </form>
+    </div>
+</section>

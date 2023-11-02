@@ -7,6 +7,10 @@
 ul,ol{
    list-style: none;
 }
+p.error_message{
+    color: red;
+    
+ }
 header{
     display: flex;
     justify-content: space-between;
@@ -75,7 +79,7 @@ header div.right a.question{
 }
 header div.right a.button{
 
-    background-color: skyblue;
+    background-color: rgb(236, 235, 235);
     color: #fff;
     display: block;
     align-items: center;
@@ -83,6 +87,7 @@ header div.right a.button{
     color: #b92b27;
     border-radius: 8px;
     border: none;
+    font-weight: bold;
 }
 
 
@@ -170,7 +175,7 @@ section#main div.content div.question div.main{
 }
 section#main div.content div.question div.main h4{
     font-size: 18px;
-    margin-bottom: 20px;
+    margin-bottom: 5px;
 
 }
 section#main div.content div.question div.main div.item{
@@ -207,3 +212,213 @@ section#main div.content div.question div.item div.like img{
 section#main div.content div.question div.item div.like h5{
 
 }
+
+section#create{
+    align-content: center;
+    justify-content: center;
+    display: flex;
+    background-color: rgb(236, 235, 235);
+    height: 100vh;
+
+
+}
+section#create div.wrapper{
+    width: 70%;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+section#create div.wrapper h2.title,section#create h2.question{
+    margin: 20px 0;
+    
+}
+section#create div.wrapper form{
+    width: 80%;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+    
+}
+section#create div.wrapper form div.input_container{
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+section#create div.wrapper form div.input_container textarea{
+    display: block;
+    width: 100%;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 15px;
+    border: 1px solid #000;
+}
+section#create div.wrapper form div.text_container{
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+section#create div.wrapper form div.text_container textarea{
+    display: block;
+    width: 100%;
+    font-size: 14px;
+    padding: 15px;
+    border: 1px solid #000;
+
+}
+section#create div.wrapper form div.submit_container{
+    margin: 20px 0;
+    
+}
+section#create div.wrapper form div.submit_container button.submit{
+    padding: 10px 20px;
+    border-radius: 10px;
+    background-color: #b92b27;
+    color: #fff;
+    font-weight: bold;
+        border: none;
+
+}
+
+section#login{
+    background-color: #b92b27;
+    align-items: center;
+    display: flex;
+    justify-content: space-around;
+    height: 100vh;
+    
+}
+section.title{
+
+}
+section.title span{
+    color: #fff;
+    font-weight: 700;
+    font-size: 35px;
+    display: block;
+    
+}
+section.title h1{
+    color: #90ed56;
+    font-weight: 700;
+    font-size: 35px;
+    display: inline-block;
+    
+}
+section.title h3{
+    color: #90ed56;
+    text-align: right;
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: 400;
+}
+
+section#login section.form{
+    padding: 30px;
+    border-radius: 8px;
+    width: 43%;
+
+}
+
+section#login div.top{
+    margin-bottom: 30px;
+
+}
+section#login div.top h1 {
+    font-size: 30px;
+    font-weight: 700;
+    color: rgb(236, 235, 235);
+}
+
+section#login div.bottom{
+   
+}
+section#login div.bottom form{
+  
+}
+section#login div.bottom div.top{
+
+}
+section#login div.bottom span{
+    color: #000;
+    font-weight: 600;font-size: 14px;
+}
+section#login div.bottom a{
+    color: #0d66b9;
+}
+section#login div.bottom a:hover{
+    color: #80f737;
+}
+
+section#login div.bottom div.top div.left{
+    margin-right: 20px;
+
+}
+section#login div.bottom  div.top div.right{
+    flex-direction: column;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  
+}
+section#login div.bottom  div.top div.right div.input_container{
+    width: 94%;
+  
+}
+section#login div.bottom label{
+    font-size: 18px;
+    font-weight: 500;
+    color: rgb(236, 235, 235);
+
+}
+section#login div.bottom input{
+   width: 74%;
+   padding: 10px;
+   border-radius: 8px;
+   outline: none;
+   border-style: solid ;
+   border-color: #0d66b9;
+}
+section#login div.bottom input :hover{
+    opacity: .5;
+ }
+section#login div.input_container{
+    display: flex;
+    margin-bottom: 30px;
+    justify-content: space-between;
+     
+ }
+ section#login div.submit_container{
+    margin: o auto;
+
+ 
+ }
+ section#login div.submit_container p.error_message{
+    color: red;
+    
+ }
+ section#login div.submit_container button{
+    width: 100%;
+    border-radius: 12px;
+    background-color: rgb(236, 235, 235);
+    color: #b92b27;
+    padding: 10px;
+    border: none;
+    margin-bottom: 20px;
+    cursor: pointer; 
+ }
+ button :hover{
+   background-color: #0d66b9;  
+ }
+ section#login div.submit_container a{
+    justify-self: flex-end;
+    align-self:center ;
+ }
